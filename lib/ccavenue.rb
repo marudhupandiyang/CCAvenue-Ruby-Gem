@@ -33,12 +33,12 @@ module Ccavenue
   	# calling response method to check if everything went well
 
   	def response(response)
-  		raw_response = CGI::parse(decrypt_data(response,@working_Key,"AES-128-CBC"))
+  		#raw_response = CGI::parse(decrypt_data(response,@working_Key,"AES-128-CBC"))
 
-  		auth_desc = raw_response["AuthDesc"][0]
-  		order_id = raw_response["Order_Id"][0]
-  		amount = raw_response["Amount"][0]
-  		checksum = raw_response["Checksum"][0]
+  		auth_desc = response["AuthDesc"]
+  		order_id = response["Order_Id"]
+  		amount = response["Amount"]
+  		checksum = response["Checksum"]
 
   		verification = verifyChecksum(order_id,amount,auth_desc,checksum)
   		return auth_desc,verification,raw_response
