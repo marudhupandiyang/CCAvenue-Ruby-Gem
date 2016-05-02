@@ -41,7 +41,7 @@ module Ccavenue
   		checksum = response["Checksum"]
 
   		verification = verifyChecksum(order_id,amount,auth_desc,checksum)
-  		return auth_desc,verification,raw_response
+  		return auth_desc,verification
   	end
 
   	private
